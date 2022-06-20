@@ -35,8 +35,6 @@ public class DataKtpJpaController implements Serializable {
     public DataKtpJpaController() {
     }
 
-    
-    
     public void create(DataKtp dataKtp) throws PreexistingEntityException, Exception {
         EntityManager em = null;
         try {

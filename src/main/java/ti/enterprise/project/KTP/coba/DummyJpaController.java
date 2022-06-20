@@ -28,12 +28,13 @@ public class DummyJpaController implements Serializable {
     }
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("ti.enterprise_project.KTP_jar_0.0.1-SNAPSHOTPU");
 
+    public DummyJpaController() {
+    }
+    
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
-    public DummyJpaController() {
-    }
 
     public void create(Dummy dummy) throws PreexistingEntityException, Exception {
         EntityManager em = null;

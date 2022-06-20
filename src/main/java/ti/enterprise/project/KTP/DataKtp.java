@@ -41,6 +41,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "DataKtp.findByBerlakuhingga", query = "SELECT d FROM DataKtp d WHERE d.berlakuhingga = :berlakuhingga")})
 public class DataKtp implements Serializable {
 
+    @Lob
+    @Column(name = "foto")
+    private byte[] foto;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -75,9 +79,6 @@ public class DataKtp implements Serializable {
     private String warganegara;
     @Column(name = "berlakuhingga")
     private String berlakuhingga;
-    @Lob
-    @Column(name = "foto")
-    private byte[] foto;
 
     public DataKtp() {
     }
@@ -186,13 +187,6 @@ public class DataKtp implements Serializable {
         this.berlakuhingga = berlakuhingga;
     }
 
-    public byte[] getFoto() {
-        return foto;
-    }
-
-    public void setFoto(byte[] foto) {
-        this.foto = foto;
-    }
 
     @Override
     public int hashCode() {
@@ -217,6 +211,14 @@ public class DataKtp implements Serializable {
     @Override
     public String toString() {
         return "ti.enterprise.project.KTP.DataKtp[ id=" + id + " ]";
+    }
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
     }
     
 }

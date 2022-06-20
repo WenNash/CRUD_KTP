@@ -16,20 +16,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class DataController {
-    
+
     DataKtpJpaController datactrl = new DataKtpJpaController();
     List<DataKtp> newdata = new ArrayList<>();
-    
+
     @RequestMapping("/data")
-    public String getDataKtp(Model model){
-        
-        try{
+    public String getDataKtp(Model model) {
+
+        int record = datactrl.getDataKtpCount();
+        String result = "";
+        try {
             newdata = datactrl.findDataKtpEntities();
-        }catch(Exception e){}
-        
+        } catch (Exception e) {
+            result = e.getMessage();
+        }
+
         model.addAttribute("goData", newdata);
-        
+        model.addAttribute("record", record);
         return "database";
     }
-    
+
+    @RequestMapping("/edit")
+    public String doEdit() {
+        return "editktp";
+    }
+
 }
